@@ -1,0 +1,16 @@
+.greeting {
+	margin: 0px 0px 10px 0px;
+	max-width: 800px;
+	color: #ccc;
+	font-size: 16px;
+	letter-spacing: 0.5px;
+}
+
+.greeting span {
+	color: rgb(237, 210, 56);
+	font-weight: 700;
+}
+
+.greeting:first-of-type {
+	padding: 50px 0px 0px 0px;
+}

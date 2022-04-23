@@ -1,0 +1,111 @@
+.details {
+	height: calc(100vh - 80px);
+	position: relative;
+	background-size: cover;
+}
+
+.details::after {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+.details-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.details__card {
+	max-width: 900px;
+	display: flex;
+	margin: 50px 0px 0px 0px;
+	border-radius: 5px;
+	overflow: hidden;
+	background-color: rgb(20, 19, 19);
+	position: relative;
+	z-index: 1;
+}
+
+.details__image {
+	position: relative;
+	flex: 0 0 30%;
+}
+
+.details__image img {
+	display: block;
+	height: 100%;
+}
+
+.details__title {
+	font-size: 25px;
+	margin: 0px 0px 15px 0px;
+}
+
+.details__info {
+	padding: 20px 40px 50px;
+	color: #ccc;
+}
+
+.details__block {
+	margin: 0px 0px 12px 0px;
+}
+
+.details__block span {
+	margin: 0px 10px 0px 0px;
+	font-weight: 700;
+	color: rgb(237, 210, 56);
+}
+
+.details__describe {
+	margin: 0px 0px 25px 0px;
+}
+
+.to-favorites {
+	height: 35px;
+	width: 35px;
+	border: 1px solid rgb(237, 210, 56);
+	border-radius: 50%;
+	background: url(../../images/heart.svg) no-repeat #000;
+	background-size: 20px;
+	background-position: 50% 50%;
+	position: absolute;
+	z-index: 1;
+	top: 7px;
+	right: 7px;
+	cursor: pointer;
+	transition: 0.4s ease;
+}
+
+.to-favorites:hover {
+	transform: scale(1.05);
+}
+
+.back {
+	display: inline-block;
+	padding: 5px 5px 5px 40px;
+	margin: 0px 0px 30px 0px;
+	background: url(../../images/arrowLeft.svg) no-repeat;
+	background-size: 25px;
+	background-position: 5px 50%;
+	font-size: 20px;
+	font-weight: 700;
+	color: #fff;
+	letter-spacing: 1px;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.4s ease;
+}
+
+.back:hover {
+	border: 1px solid #fff;
+}

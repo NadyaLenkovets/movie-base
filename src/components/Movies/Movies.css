@@ -1,0 +1,31 @@
+.movies {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	column-gap: 15px;
+	row-gap: 45px;
+	justify-items: center;
+	padding: 0px 0px 60px 0px;
+}
+
+.spinner {
+	width: 34px;
+	height: 34px;
+	margin: 40px auto 0px;
+	border-radius: 50%;
+	border: 4.5px solid transparent;
+	animation: spin 2s linear infinite;
+	border-left: 4.5px solid rgb(237, 210, 56);
+	border-bottom: 4.5px solid rgb(237, 210, 56);
+	border-top: 4.5px solid rgb(237, 210, 56);
+}
+
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
