@@ -1,0 +1,15 @@
+.error-boundary {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.error-boundary__container {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.error-boundary__title {
+	color: #fff;
+}

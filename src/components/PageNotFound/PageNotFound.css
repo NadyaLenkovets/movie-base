@@ -1,0 +1,18 @@
+.page-not-found {
+	padding: 100px 0px 0px 0px;
+	color: #ccc;
+}
+
+.page-not-found__title {
+	text-align: center;
+}
+
+.page-not-found__link {
+	margin: 0px 0px 0px 10px;
+	color: rgb(237, 210, 56);
+	transition: 0.4s ease;
+}
+
+.page-not-found__link:hover {
+	color: #fff;
+}
