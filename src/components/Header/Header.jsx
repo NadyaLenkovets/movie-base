@@ -6,7 +6,7 @@ import './Header.css';
 
 export const Header = (props) => {
 	const {
-		userIsAuth,
+		isAuthUser,
 		userLogOut,
 		username
 	} = props;
@@ -18,7 +18,7 @@ export const Header = (props) => {
 			</div>
 
 			{
-				userIsAuth
+				isAuthUser
 					? <>
 						<div className="header__username">{username}</div>
 						<div className="headerButtons">
@@ -37,7 +37,7 @@ export const Header = (props) => {
 };
 
 Header.propTypes = {
-	userIsAuth: PropTypes.bool,
+	isAuthUser: PropTypes.bool,
 	userLogOut: PropTypes.func,
 	username: PropTypes.string,
 }

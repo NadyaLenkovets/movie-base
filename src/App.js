@@ -14,15 +14,16 @@ import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
 import './App.css';
 
 export const App = () => {
-  const [userIsAuth, setUserIsAuth] = useState(false);
+  const [isAuthUser, setisAuthUser] = useState(false);
   const [username, setUsername] = useState('');
+  const [theme, setTheme] = useState('dark'); // контекст
 
   const userLogOut = () => {
-    setUserIsAuth(false);
+    setisAuthUser(false);
   }
 
   const userLogIn = () => {
-    setUserIsAuth(true);
+    setisAuthUser(true);
   }
 
   const setUserName = (name) => {
@@ -31,19 +32,22 @@ export const App = () => {
 
   return (
     <ErrorBoundary>
-      <div className="app">
-        <Header userIsAuth={userIsAuth} userLogOut={userLogOut} username={username} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login userLogIn={userLogIn} setUserName={setUserName} />} />
-          <Route path="/signup" element={<SignUp userLogIn={userLogIn} setUserName={setUserName} />} />
-          <Route path="/movie/:imdbID" element={<MovieDetails />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/history" element={<History />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </div>
+      <ThemeContext.Provider value={{ theme, setTheme }}>
+        <div className="app">
+          <Header isAuthUser={isAuthUser} userLogOut={userLogOut} username={username} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login userLogIn={userLogIn} setUserName={setUserName} />} />
+            <Route path="/signup" element={<SignUp userLogIn={userLogIn} setUserName={setUserName} />} />
+            <Route path="/movie/:imdbID" element={<MovieDetails />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/history" element={<History />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </div>
+      </ThemeContext.Provider>
     </ErrorBoundary>
   );
 }
 
+export const ThemeContext = React.createContext();
