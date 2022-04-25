@@ -10,6 +10,7 @@ import { Login } from './components/Login/Login';
 import { SignUp } from './components/Sign-Up/Sign-Up';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
 import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
+import { SearchList } from './components/SearchList/SearchList';
 
 import './App.css';
 
@@ -39,6 +40,7 @@ export const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login userLogIn={userLogIn} setUserName={setUserName} />} />
             <Route path="/signup" element={<SignUp userLogIn={userLogIn} setUserName={setUserName} />} />
+            <Route path="/search/:name" element={<SearchList />} />
             <Route path="/movie/:imdbID" element={<MovieDetails />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/history" element={<History />} />
