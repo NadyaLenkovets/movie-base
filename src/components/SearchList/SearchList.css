@@ -37,3 +37,9 @@
 .search-list__button:active {
 	transform: translateY(5px);
 }
+
+.search-list__error {
+	color: #fff;
+	font-size: 22px;
+	text-align: center;
+}

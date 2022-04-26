@@ -12,7 +12,7 @@ export const SearchList = () => {
 	const [type, setType] = useState('');
 	const [query, setQuery] = useState('');
 	const { name } = useParams();
-	const { movies } = useFetch(name, type);
+	const { data, error } = useFetch(name, type);
 	const navigate = useNavigate();
 
 	const goBack = () => navigate(-1);
@@ -42,13 +42,14 @@ export const SearchList = () => {
 			</div>
 			<div className="search-list__cards">
 				{
-					movies.length ?
-						movies.map(movie => {
+					data ?
+						data.map(movie => {
 							return <MovieCard key={movie.imdbID} {...movie} />
 						}) :
 						<div className="spinner" />
 				}
 			</div>
+			{error ? <div className="search-list__error">Error</div> : null}
 		</section>
 	);
 };
