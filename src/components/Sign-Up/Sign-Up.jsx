@@ -1,65 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { userSignUp, loginError, loginErrorText, redirect } from '../../features/user/userSlice';
 
 import './Sign-Up.css';
 
-export const SignUp = (props) => {
-	const navigate = useNavigate();
-	const [values, setValues] = useState({
-		username: '',
-		password: ''
-	});
-	const {
-		setUserName,
-		userLogIn
-	} = props;
+export const SignUp = () => {
+  const [values, setValues] = useState({
+    username: '',
+    password: ''
+  });
+  const logInError = useSelector(loginError);
+  const logInErrorText = useSelector(loginErrorText);
+  const redirectHome = useSelector(redirect);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-	const handleUsernameInputChange = (e) => {
-		setValues({ ...values, username: e.target.value })
-	}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(userSignUp(values));
+  }
 
-	const handlePasswordInputChange = (e) => {
-		setValues({ ...values, password: e.target.value })
-	}
+  const handleUsernameInputChange = (e) => {
+    setValues({ ...values, username: e.target.value })
+  }
 
-	const handleSubmit = (e) => { //TODO добавить проверку на существование юзера
-		e.preventDefault();
-		localStorage.setItem('Username', JSON.stringify(values.username));
-		localStorage.setItem('Password', JSON.stringify(values.password));
-		userLogIn();
-		setUserName(values.username);
-		goHome();
-	}
+  const handlePasswordInputChange = (e) => {
+    setValues({ ...values, password: e.target.value })
+  }
 
-	const goHome = () => navigate('/', { replace: true });
+  const goHome = () => navigate('/', { replace: true });
 
-	return <section className="sign-up">
-		<div className="sign-up_window">
-			<h2 className="sign-up__header">Sign Up</h2>
-			<p className="sign-up__text">Create an account.</p>
+  useEffect(() => {  // переход на Home 
+    if (redirectHome) {
+      goHome();
+    }
+  }, [redirectHome]);
 
-			<form onSubmit={handleSubmit} className="sign-up__form">
-				<input
-					onChange={handleUsernameInputChange}
-					value={values.username}
-					className="sign-up__input"
-					type="text"
-					placeholder="Username"
-					required />
-				<input
-					onChange={handlePasswordInputChange}
-					value={values.password}
-					className="sign-up__input"
-					type="password"
-					placeholder="Password"
-					required />
-				<button className="sign-up__btn" type="submit">Sign Up</button>
-			</form>
-			<p className="sign-up__suggest">Already have an account?
-				<Link to="/login" className="sign-up__link">Login</Link>
-			</p>
-		</div>
-	</section>
+
+  return <section className="sign-up">
+    <div className="sign-up_window">
+      <h2 className="sign-up__header">Sign Up</h2>
+      <p className="sign-up__text">Create an account.</p>
+
+      <form onSubmit={handleSubmit} className="sign-up__form">
+        <input
+          onChange={handleUsernameInputChange}
+          value={values.username}
+          className="sign-up__input"
+          type="text"
+          placeholder="Username"
+          required />
+        <input
+          onChange={handlePasswordInputChange}
+          value={values.password}
+          className="sign-up__input"
+          type="password"
+          placeholder="Password"
+          required />
+        <button className="sign-up__btn" type="submit">Sign Up</button>
+      </form>
+      <p className="sign-up__suggest">Already have an account?
+        <Link to="/login" className="sign-up__link">Login</Link>
+      </p>
+      {logInError ? <div className="login__error">{logInErrorText}</div> : null}
+    </div>
+  </section>
 }
 
 

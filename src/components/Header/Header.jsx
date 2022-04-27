@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { isUserAuth, getUsername, userLogOut } from '../../features/user/userSlice';
 
 import './Header.css';
 
-export const Header = (props) => {
-  const {
-    isAuthUser,
-    userLogOut,
-    username
-  } = props;
+
+export const Header = () => {
+  const dispatch = useDispatch();
+  const isAuth = useSelector(isUserAuth);
+  const username = useSelector(getUsername);
 
   return (
     <header className="header container">
@@ -18,13 +19,13 @@ export const Header = (props) => {
       </div>
 
       {
-        isAuthUser
+        isAuth
           ? <>
             <div className="header__username">{username}</div>
             <div className="headerButtons">
               <Link to="/favorites" className="header__btn ">Favorites</Link>
               <Link to="/history" className="header__btn ">History</Link>
-              <Link to="/" className="header__btn" onClick={userLogOut}>Log Out</Link>
+              <Link to="/" className="header__btn" onClick={dispatch(userLogOut)}>Log Out</Link>
             </div>
           </>
           : <div className="headerButtons">
@@ -35,9 +36,3 @@ export const Header = (props) => {
     </header>
   );
 };
-
-Header.propTypes = {
-  isAuthUser: PropTypes.bool,
-  userLogOut: PropTypes.func,
-  username: PropTypes.string,
-}
