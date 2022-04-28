@@ -1,72 +1,72 @@
 .header {
-	height: 80px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .headerLogo {
-	padding: 0px 0px 0px 45px;
-	font-size: 35px;
-	color: rgb(237, 210, 56);
-	font-weight: 700;
-	cursor: pointer;
-	background: url(../../images/logo.png) no-repeat;
-	background-size: 40px;
+  padding: 0px 0px 0px 45px;
+  font-size: 35px;
+  color: rgb(237, 210, 56);
+  font-weight: 700;
+  cursor: pointer;
+  background: url(../../images/logo.png) no-repeat;
+  background-size: 40px;
 }
 
 .logoLink {
-	display: block;
-	color: rgb(237, 210, 56);
-	text-decoration: none;
-	transition: 0.4s ease;
+  display: block;
+  color: rgb(237, 210, 56);
+  text-decoration: none;
+  transition: 0.4s ease;
 }
 
 .logoLink:hover {
-	transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .header__username {
-	color: #fff;
-	font-size: 24px;
-	font-weight: 700;
-	letter-spacing: 2px;
-	position: relative;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  position: relative;
 }
 
 .headerButtons {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .header__btn {
-	display: block;
-	height: 40px;
-	padding: 0px 20px;
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
-	line-height: 38px;
-	text-decoration: none;
-	letter-spacing: 1px;
-	font-weight: 700;
-	border-radius: 8px;
-	border: 1px solid rgb(237, 210, 56);
-	color: rgb(237, 210, 56);
-	background-color: rgb(43, 41, 41);
-	transition: 0.4s ease;
-	cursor: pointer;
+  display: block;
+  height: 40px;
+  padding: 0px 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 38px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1px solid rgb(237, 210, 56);
+  color: rgb(237, 210, 56);
+  background-color: rgb(43, 41, 41);
+  transition: 0.4s ease;
+  cursor: pointer;
 }
 
 .header__btn:not(:last-of-type) {
-	margin: 0px 10px 0px 0px;
+  margin: 0px 10px 0px 0px;
 }
 
 .header__btn:hover {
-	background-color: rgb(237, 210, 56);
-	color: rgb(43, 41, 41);
-	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+  background-color: rgb(237, 210, 56);
+  color: rgb(43, 41, 41);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* .signInButton {
-	margin: 0px 10px 0px 0px;
+  margin: 0px 10px 0px 0px;
 } */
