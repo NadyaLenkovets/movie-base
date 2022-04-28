@@ -1,14 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { APIKey } from '../../common/apis/MovieApiKey';
 import { ThemeContext } from '../../App';
+import { toUserFavorites } from '../../features/user/userSlice';
+import { isUserAuth } from '../../features/user/userSlice';
 
 import './MovieDetails.css';
 
 export const MovieDetails = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isAuth = useSelector(isUserAuth);
   const { imdbID } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
   const { theme, setTheme } = useContext(ThemeContext);
@@ -39,6 +44,10 @@ export const MovieDetails = () => {
       .then((body) => setMovieDetails(body))
     // .then((body) => console.log(body)) //!
   }, []);
+
+  const handleClick = () => {
+    dispatch(toUserFavorites(`${imdbID}`));
+  }
 
   return (
     <section className='details'
@@ -72,7 +81,7 @@ export const MovieDetails = () => {
             </div>
             <div className="details__image">
               <img src={poster} alt={title} />
-              <div className="to-favorites" onClick={() => console.log('Favorite')}></div>
+              <div className="to-favorites" onClick={isAuth ? handleClick : () => console.log('not auth')}></div>
             </div>
           </div>
         </div>

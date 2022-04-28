@@ -17,7 +17,7 @@ export const Favorites = () => {
   useEffect(() => {
     // сначала получает массив id из ls
     if (JSON.parse(localStorage.getItem(username))) {
-      setFavorites(JSON.parse(localStorage.getItem(username)).favorites);
+      setFavorites(Object.keys(JSON.parse(localStorage.getItem(username)).favorites));
     }
   }, []);
 

@@ -1,10 +1,12 @@
 export const userMiddleware = (store) => (next) => (action) => {
   let currentStore = store.getState();
+  const usernameInLocalStorage = JSON.parse(localStorage.getItem(`${action.payload.username}`));
+  const userObjInLocalStorage = JSON.parse(localStorage.getItem(`${currentStore.user.username}`));
   let result;
 
   if (action.type === 'user/userSignUp') {// проверяем, регистрацию
 
-    if (JSON.parse(localStorage.getItem(`${action.payload.username}`))) {
+    if (usernameInLocalStorage) {
 
       result = next({ type: 'user/userSignUpError' }); // ошибка, юзер уже существует
     } else {
@@ -20,10 +22,10 @@ export const userMiddleware = (store) => (next) => (action) => {
   }
 
   else if (action.type === 'user/userLogIn') { // проверяем авторизацию
-    if (JSON.parse(localStorage.getItem(`${action.payload.username}`))) {
+    if (usernameInLocalStorage) {
       // если юзер существует, проверяем пароль
       // если пароль совпадает
-      if (JSON.parse(localStorage.getItem(`${action.payload.username}`)).password === action.payload.password) {
+      if (usernameInLocalStorage.password === action.payload.password) {
         result = next(action); // юзер авторизовался
       }
 
@@ -36,18 +38,27 @@ export const userMiddleware = (store) => (next) => (action) => {
     }
   }
 
-  else if (action.type === 'user/toUserFavorites') {
-    let favArr = JSON.parse(localStorage.getItem(`${currentStore.user.username}`)).favorites; //! заменить на объект
+  else if (action.type === 'user/toUserFavorites' || action.type === 'user/toUserHistory') {
+    const favoritesObj = userObjInLocalStorage.favorites;
+    const historyObj = userObjInLocalStorage.history;
 
-    if (!favArr.includes(action.payload)) {
-      favArr.push(action.payload);
+    if (action.type === 'user/toUserFavorites') {
+      if (!favoritesObj[action.payload]) {
+        favoritesObj[action.payload] = true;
+      }
+    } else if (action.type === 'user/toUserHistory') {
+      if (!historyObj[action.payload]) {
+        if ((action.payload).trim().length > 0) { //! проверка regexp
+          historyObj[action.payload] = true;
+        }
+      }
     }
 
     localStorage.setItem(currentStore.user.username, JSON.stringify({
       username: currentStore.user.username,
       password: currentStore.user.userPassword,
-      favorites: favArr,
-      history: [],
+      favorites: favoritesObj,
+      history: historyObj,
     }));
 
     result = next(action);
