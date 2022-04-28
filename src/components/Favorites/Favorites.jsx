@@ -1,22 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { useSelector } from 'react-redux';
+import { getUsername } from '../../features/user/userSlice';
+
+import { APIKey } from '../../common/apis/MovieApiKey';
+import movieApi from '../../common/apis/movieApi';
+import { FavoritesCard } from '../FavoritesCard/FavoritesCard';
 
 import './Favorites.css';
 
 export const Favorites = () => {
-	return (
-		<section className='favorites'>
-			<div className='favorites__container'>
-				<div className="favorites__card">
-					<div className="favorites__image"></div>
-					<div className="favorites__info">
-						<h3 className="favorites__block favorites__title">Title</h3>
-						<p className="favorites__block">Year</p>
-						<p className="favorites__block">imdbRating</p>
-						<p className="favorites__block">Actors</p>
-						<p className="favorites__block">Runtime</p>
-					</div>
-				</div>
-			</div>
-		</section>
-	);
+  const username = useSelector(getUsername); // username
+  const [list, setList] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    // сначала получает массив id из ls
+    if (JSON.parse(localStorage.getItem(username))) {
+      setFavorites(JSON.parse(localStorage.getItem(username)).favorites);
+    }
+  }, []);
+
+  useEffect(() => {
+    const fetchMovies = async (movieId) => {
+      const response = await movieApi.get(`?apiKey=${APIKey}&i=${movieId}`)
+        .catch((err) => {
+          console.log('Err:', err);
+        });
+      setList((prev) => ([...prev, response.data]))
+    }
+
+    // получает объекты с инфой
+    favorites.forEach(movieId => {
+      fetchMovies(movieId);
+    })
+  }, [favorites]);
+
+
+  return (
+    <section className='favorites'>
+      <div className='favorites__container'>
+        {
+          list.length ?
+            list.map(movie => {
+              return (
+                <FavoritesCard key={movie.imdbID} {...movie}></FavoritesCard>
+              )
+            })
+            : <div className="spinner" />
+        }
+      </div>
+    </section>
+  );
 };

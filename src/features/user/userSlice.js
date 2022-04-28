@@ -10,8 +10,8 @@ const userSlice = createSlice({
     error: false,
     errorText: '',
     redirect: false,
-    userFavorites: {},
-    userHistory: {},
+    userFavorites: [],
+    userHistory: [],
   },
 
   reducers: {
@@ -44,7 +44,14 @@ const userSlice = createSlice({
       state.errorText = 'Wrong password!';
     },
     toUserFavorites(state, action) {
-
+      if (!state.userFavorites.includes(action.payload)) {
+        state.userFavorites.push(action.payload);   //! заменить на объект
+      }
+    },
+    toUserHistory(state, action) {
+      if (!state.userHistory.includes(action.payload)) {
+        state.userHistory.push(action.payload);   //! заменить на объект
+      }
     },
   }
 });

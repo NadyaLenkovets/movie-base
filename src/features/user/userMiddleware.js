@@ -1,5 +1,5 @@
 export const userMiddleware = (store) => (next) => (action) => {
-  // let currentStore = store.getState();
+  let currentStore = store.getState();
   let result;
 
   if (action.type === 'user/userSignUp') {// проверяем, регистрацию
@@ -34,6 +34,23 @@ export const userMiddleware = (store) => (next) => (action) => {
     } else {
       result = next({ type: 'user/loginErrorUserNotRegistered' }); // ошибка, юзер еще не зарегистрирован
     }
+  }
+
+  else if (action.type === 'user/toUserFavorites') {
+    let favArr = JSON.parse(localStorage.getItem(`${currentStore.user.username}`)).favorites; //! заменить на объект
+
+    if (!favArr.includes(action.payload)) {
+      favArr.push(action.payload);
+    }
+
+    localStorage.setItem(currentStore.user.username, JSON.stringify({
+      username: currentStore.user.username,
+      password: currentStore.user.userPassword,
+      favorites: favArr,
+      history: [],
+    }));
+
+    result = next(action);
   }
 
   else {
