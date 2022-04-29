@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { APIKey } from '../../common/apis/MovieApiKey';
 import { ThemeContext } from '../../App';
 import { toUserFavorites } from '../../features/user/userSlice';
 import { isUserAuth } from '../../features/user/userSlice';
+import { GoBack } from '../GoBack/GoBack';
 
 import './MovieDetails.css';
 
 export const MovieDetails = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuth = useSelector(isUserAuth);
   const { imdbID } = useParams();
@@ -36,8 +36,6 @@ export const MovieDetails = () => {
     theme === 'dark' ? setTheme('light') : setTheme('dark');
   }
 
-  const goBack = () => navigate(-1);
-
   useEffect(() => {
     fetch(`http://www.omdbapi.com/?apikey=${APIKey}&i=${imdbID}&plot=full`)
       .then(responce => responce.json())
@@ -58,13 +56,21 @@ export const MovieDetails = () => {
             {theme === 'dark' ? 'details__card dark' : 'details__card light'}
           >
             <div className="details__info">
-              <div className="details__buttons">
-                <div className='back' onClick={goBack}>Back</div>
-                <button
-                  className='theme-toggler'
-                  onClick={themeToggle}>
-                  {theme === 'dark' ? 'Light' : 'Dark'} mode
-                </button>
+              <div className="details__controls">
+                <GoBack />
+                <div className="details__buttons">
+                  <button
+                    className='theme-toggler'
+                    onClick={themeToggle}>
+                    {theme === 'dark' ? 'Light' : 'Dark'} mode
+                  </button>
+                  {isAuth
+                    ? <button className="to-favorites" onClick={handleClick}></button>
+                    : <Link to={`/login`} >
+                      <button className="to-favorites"></button>
+                    </Link>
+                  }
+                </div>
               </div>
               <h2 className="details__title">{title}</h2>
               <div className="details__describe">
@@ -81,7 +87,7 @@ export const MovieDetails = () => {
             </div>
             <div className="details__image">
               <img src={poster} alt={title} />
-              <div className="to-favorites" onClick={isAuth ? handleClick : () => console.log('not auth')}></div>
+
             </div>
           </div>
         </div>

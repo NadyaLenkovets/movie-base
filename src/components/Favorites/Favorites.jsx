@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
 import { useSelector } from 'react-redux';
+
+import { FavoritesCard } from '../FavoritesCard/FavoritesCard';
+import { GoBack } from '../GoBack/GoBack';
+
 import { getUsername } from '../../features/user/userSlice';
 
 import { APIKey } from '../../common/apis/MovieApiKey';
 import movieApi from '../../common/apis/movieApi';
-import { FavoritesCard } from '../FavoritesCard/FavoritesCard';
+
 
 import './Favorites.css';
 
@@ -40,15 +43,18 @@ export const Favorites = () => {
   return (
     <section className='favorites'>
       <div className='favorites__container'>
-        {
-          list.length ?
-            list.map(movie => {
-              return (
-                <FavoritesCard key={movie.imdbID} {...movie}></FavoritesCard>
-              )
-            })
-            : <div className="spinner" />
-        }
+        <GoBack />
+        <div className="favorites__cards">
+          {
+            list.length ?
+              list.map(movie => {
+                return (
+                  <FavoritesCard key={movie.imdbID} {...movie}></FavoritesCard>
+                )
+              })
+              : <div className="spinner" />
+          }
+        </div>
       </div>
     </section>
   );

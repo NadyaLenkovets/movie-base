@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import { GoBack } from '../GoBack/GoBack';
+
 import { getUsername } from '../../features/user/userSlice';
 
 import './History.css';
@@ -21,6 +23,7 @@ export const History = () => {
     <section className='history'>
       <div className='history__container'>
         <div className="history__card">
+          <GoBack />
           <h2 className="history__title">Your search history</h2>
           {
             history.length ?

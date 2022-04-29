@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useParams } from 'react-router';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { toUserHistory } from '../../features/user/userSlice';
 import { MovieCard } from '../MovieCard/MovieCard';
+import { GoBack } from '../GoBack/GoBack';
+
 import { useFetch } from "../../common/useFetch";
+import { toUserHistory } from '../../features/user/userSlice';
 
 import './SearchList.css';
 
@@ -15,10 +17,7 @@ export const SearchList = () => {
   const [query, setQuery] = useState('');
   const { name } = useParams();
   const { data, error } = useFetch(name, type);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const goBack = () => navigate(-1);
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -26,7 +25,7 @@ export const SearchList = () => {
 
   return (
     <section className="search-list container">
-      <button className='back' onClick={goBack}>Back</button>
+      <GoBack />
       <div className="search-list__search">
         <input
           className="searchInput"
