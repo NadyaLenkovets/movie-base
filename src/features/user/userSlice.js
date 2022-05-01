@@ -29,6 +29,7 @@ const userSlice = createSlice({
     userLogIn(state, action) {
       state.isUserRegistered = true;
       state.username = action.payload.username;
+      state.userPassword = action.payload.password;
       state.error = false;
       state.redirect = true;
     },
@@ -44,12 +45,22 @@ const userSlice = createSlice({
       state.errorText = 'Wrong password!';
     },
     toUserFavorites(state, action) {
-
+      if (!state.userFavorites[action.payload]) {
+        state.userFavorites[action.payload] = true;
+      }
+    },
+    toUserHistory(state, action) {
+      if (!state.userHistory[action.payload]) {
+        if ((action.payload).trim().length > 0) { //! проверка regexp
+          state.userHistory[action.payload] = true;
+        }
+      }
     },
   }
 });
+
 // экспортируем экшены
-export const { userSignUp, userLogIn, userLogOut, toUserFavorites } = userSlice.actions;
+export const { userSignUp, userLogIn, userLogOut, toUserFavorites, toUserHistory } = userSlice.actions;
 // получаем state для useSelector
 export const getUsername = state => state.user.username;
 export const isUserAuth = state => state.user.isUserRegistered;
@@ -58,4 +69,3 @@ export const loginErrorText = state => state.user.errorText;
 export const redirect = state => state.user.redirect;
 // экспортируем редюсер
 export default userSlice.reducer;
-
