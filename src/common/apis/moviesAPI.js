@@ -42,34 +42,3 @@ export const moviesAPI = createApi({
 })
 
 export const { useFetchAllMoviesQuery, useFetchOneMovieQuery } = moviesAPI;
-
-
-
-
-// const arr = [
-//   {
-//     Name: 'Nadya',
-//     Age: 30,
-//   },
-//   {
-//     Name: 'Vasya',
-//     City: 'Minsk',
-//   },
-//   {
-//     Name: 'Lena',
-//     Surname: 'OOO',
-//   },
-// ];
-
-// const resArr = [];
-// const newObj = {};
-// for (let object of arr) {
-//   for (let key1 in object) {
-//     // key1 = key1.toLowerCase();
-//     newObj[key1[0].toLowerCase() + key1.slice(1)] = object[key1];
-//     console.log(newObj);
-//     // resArr.push(newObj);
-//   }
-
-//   console.log(resArr);
-// }
