@@ -3,7 +3,6 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { MovieCard } from '../MovieCard/MovieCard';
 import { GoBack } from '../GoBack/GoBack';
 
 import { useFetch } from "../../common/useFetch";
@@ -18,7 +17,6 @@ export const SearchList = () => {
   const { name } = useParams();
   const { data, error } = useFetch(name, type);
   const dispatch = useDispatch();
-
   const handleChange = (e) => {
     setQuery(e.target.value);
   }
@@ -46,7 +44,16 @@ export const SearchList = () => {
         {
           data ?
             data.map(movie => {
-              return <MovieCard key={movie.imdbID} {...movie} />
+              return (
+                <div className="movie__item" key={movie.imdbID}>
+                  <div className="movie__image">
+                    <img src={movie.Poster} alt="No poster"></img>
+                  </div>
+                  <Link to={`/movie/${movie.imdbID}`} >
+                    <button className="btn more-button">More</button>
+                  </Link>
+                </div>
+              )
             }) :
             <div className="spinner" />
         }

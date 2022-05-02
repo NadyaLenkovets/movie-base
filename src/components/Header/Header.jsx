@@ -14,10 +14,9 @@ export const Header = () => {
 
   return (
     <header className="header container">
-      <div className="headerLogo">
-        <Link to="/" className="logoLink">Movie Base</Link>
-      </div>
-
+      <Link to="/" className="logoLink">
+        <div className="headerLogo">Movie Base</div>
+      </Link>
       {
         isAuth
           ? <>

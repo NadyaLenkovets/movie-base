@@ -16,6 +16,13 @@
   left: 0;
 }
 
+.favorites__main-title {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0px 0px 40px 0px;
+}
+
 .favorites__container {
   max-width: 1300px;
   margin: 0 auto;
@@ -29,4 +36,9 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.no-favorites {
+  color: #ccc;
+  font-size: 18px;
 }

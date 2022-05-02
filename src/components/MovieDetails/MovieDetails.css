@@ -131,3 +131,11 @@
 .to-favorites:hover {
   background-color: rgba(198, 38, 10, 0.7);
 }
+
+.to-favorites.active {
+  background-color: rgb(185, 48, 24);
+}
+
+.to-favorites.active:hover {
+  background-color: #ccc;
+}

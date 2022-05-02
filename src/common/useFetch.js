@@ -4,8 +4,8 @@ import { APIKey } from "./apis/MovieApiKey";
 
 export const useFetch = (name, type) => {
   const [status, setStatus] = useState({
-    data: undefined,
-    error: undefined
+    data: [],
+    error: false,
   });
 
   function fetchNow() {
@@ -15,7 +15,7 @@ export const useFetch = (name, type) => {
         setStatus({ data: res.Search })
       })
       .catch((error) => {
-        setStatus({ error })
+        setStatus({ error: true })
       })
   }
 
