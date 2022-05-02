@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import "./MovieCard.css";
+import './MovieCard.css';
 
 export const MovieCard = (props) => {
   const {
@@ -11,12 +11,12 @@ export const MovieCard = (props) => {
   } = props;
 
   return (
-    <div className="movie__item" >
-      <div className="movie__image">
-        <img src={poster} alt="No poster"></img>
+    <div className='movie__item' >
+      <div className='movie__image'>
+        <img src={poster} alt='No poster'></img>
       </div>
       <Link to={`/movie/${imdbID}`} >
-        <button className="btn more-button">More</button>
+        <button className='btn more-button'>More</button>
       </Link>
     </div>
   );

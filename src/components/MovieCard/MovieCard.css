@@ -1,7 +1,3 @@
-.movie__item {
-  /* cursor: pointer; */
-}
-
 .movie__image {
   width: 200px;
   overflow: hidden;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { GoBack } from '../GoBack/GoBack';
+import { GoBack } from '../GoBack';
 
 import { getUsername } from '../../features/user/userSlice';
 
@@ -24,14 +24,14 @@ export const History = () => {
   return (
     <section className='history'>
       <div className='history__container'>
-        <div className="history__card">
+        <div className='history__card'>
           <GoBack />
-          <h2 className="history__title">Your search history</h2>
+          <h2 className='history__title'>Your search history</h2>
           {
             history.length ?
               history.map(query => {
                 return (
-                  <div className="history__block" key={query}>
+                  <div className='history__block' key={query}>
                     <Link to={`/search/${query}`} >
                       <span>{query}</span>
                     </Link>
