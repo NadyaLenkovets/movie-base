@@ -1,23 +1,21 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import { MovieCard } from '../MovieCard/MovieCard';
 
-import { getAllMovies } from '../../features/movies/movieSlice';
-
 import './Movies.css';
 
-export const Movies = () => {
-  const movies = useSelector(getAllMovies);
+export const Movies = (data) => {
+  const { movies } = data;
 
   return (
     <section className="movies">
       {
-        movies.Response === 'True' ?
-          movies.Search.map(movie => {
+        movies ?
+          movies.map(movie => {
             return <MovieCard key={movie.imdbID} {...movie} />
-          }) :
-          <div className="spinner"></div>
+          })
+          :
+          <div className="spinner" />
       }
     </section>
   );

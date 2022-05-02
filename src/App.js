@@ -11,8 +11,10 @@ import { SignUp } from './components/Sign-Up/Sign-Up';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
 import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
 import { SearchList } from './components/SearchList/SearchList';
+import { DynamicSearch } from './components/DynamicSearch/DynamicSearch';
 
 import './App.css';
+
 
 export const App = () => {
   const [theme, setTheme] = useState('dark'); // контекст
@@ -27,6 +29,7 @@ export const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/search/:name" element={<SearchList />} />
+            <Route path="/dynamic-search" element={<DynamicSearch />} />
             <Route path="/movie/:imdbID" element={<MovieDetails />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/history" element={<History />} />

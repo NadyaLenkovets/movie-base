@@ -49,9 +49,12 @@ const userSlice = createSlice({
         state.userFavorites[action.payload] = true;
       }
     },
+    removeFromUserFavorites(state, action) {
+      delete state.userFavorites[action.payload];
+    },
     toUserHistory(state, action) {
       if (!state.userHistory[action.payload]) {
-        if ((action.payload).trim().length > 0) { //! проверка regexp
+        if ((action.payload).trim().length > 0) {
           state.userHistory[action.payload] = true;
         }
       }
@@ -60,7 +63,7 @@ const userSlice = createSlice({
 });
 
 // экспортируем экшены
-export const { userSignUp, userLogIn, userLogOut, toUserFavorites, toUserHistory } = userSlice.actions;
+export const { userSignUp, userLogIn, userLogOut, toUserFavorites, removeFromUserFavorites, toUserHistory } = userSlice.actions;
 // получаем state для useSelector
 export const getUsername = state => state.user.username;
 export const isUserAuth = state => state.user.isUserRegistered;

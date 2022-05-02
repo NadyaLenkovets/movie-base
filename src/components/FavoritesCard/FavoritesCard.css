@@ -1,46 +1,79 @@
 .favorites__image {
-	height: 300px;
-	background-repeat: no-repeat;
-	background-size: cover;
-	flex: 0 0 auto;
-	background: url(../../images/example.jpg) no-repeat;
-	background-size: cover;
-	margin: 0px 0px 30px 0px;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex: 0 0 auto;
+  background: url(../../images/example.jpg) no-repeat;
+  background-size: cover;
+  margin: 0px 0px 30px 0px;
+}
+
+.favorites__card-container {
+  position: relative;
 }
 
 .favorites__card {
-	margin: 0px 10px 10px 0px;
-	min-height: 410px;
-	width: 250px;
-	padding: 20px;
-	background-color: rgb(20, 19, 19);
-	border-radius: 8px;
-	display: flex;
-	flex-direction: column;
-	height: 95%;
-	transition: 0.4s ease;
+  margin: 0px 10px 10px 0px;
+  min-height: 410px;
+  width: 250px;
+  padding: 20px;
+  background-color: rgb(20, 19, 19);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+  transition: 0.4s ease;
+
 }
 
 .favorites__card:hover {
-	transform: scale(1.05);
+  box-shadow: 0px 0px 7px rgba(198, 38, 10, 1);
 }
 
 .favorites__info {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .favorites__block {
-	color: #ccc;
-	margin: 0px 0px 7px 0px;
+  color: #ccc;
+  margin: 0px 0px 7px 0px;
 }
 
 .favorites__title {
-	margin: 0px 0px 10px 0px;
-	flex: 1 0 auto;
+  margin: 0px 0px 10px 0px;
+  flex: 1 0 auto;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
+}
+
+.remove-from-favorites {
+  height: 31px;
+  width: 31px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  background: url(../../images/heart.svg) no-repeat #ccc;
+  background-size: 20px;
+  background-position: 50% 50%;
+  cursor: pointer;
+  transition: 0.4s ease;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  z-index: 5;
+}
+
+.remove-from-favorites:hover {
+  background-color: rgba(198, 38, 10, 1);
+}
+
+.remove-from-favorites.active {
+  background-color: rgb(185, 48, 24);
+}
+
+.remove-from-favorites.active:hover {
+  background-color: #ccc;
 }

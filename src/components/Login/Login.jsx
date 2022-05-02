@@ -32,7 +32,7 @@ export const Login = () => {
 
   const goHome = () => navigate('/', { replace: true });
 
-  useEffect(() => {  // переход на Home 
+  useEffect(() => {
     if (redirectHome) {
       goHome();
     }
@@ -64,7 +64,6 @@ export const Login = () => {
       </p>
       {logInError ? <div className="login__error">{logInErrorText}</div> : null}
     </div>
-
   </section>
 }
 

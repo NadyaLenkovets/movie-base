@@ -15,15 +15,22 @@ export const Search = () => {
   }
 
   return <div className="search">
-    <input
-      className="searchInput"
-      type="text"
-      placeholder="Type your movie title"
-      onChange={handleChange}
-    />
-    <Link to={`/search/${query}`}>
-      <button className="search__btn" onClick={() => dispatch(toUserHistory(`${query}`))}>Search</button>
-    </Link>
+    <div>
+      <input
+        className="searchInput"
+        type="text"
+        placeholder="Type your movie title"
+        onChange={handleChange}
+      />
+      <Link to={`/search/${query}`}>
+        <button className="search__btn" onClick={() => dispatch(toUserHistory(`${query}`))}>Search</button>
+      </Link>
+    </div>
+    <div>
+      <Link to={`/dynamic-search`}>
+        <button className="search__btn dynamic-search__btn">Dynamic search</button>
+      </Link>
+    </div>
   </div>
 }
 

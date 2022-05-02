@@ -14,8 +14,10 @@ export const History = () => {
 
   useEffect(() => {
     // получает массив запросов из ls
-    if (JSON.parse(localStorage.getItem(username))) {
-      setHistory(Object.keys(JSON.parse(localStorage.getItem(username)).history));
+    const usernameInLocalStorage = JSON.parse(localStorage.getItem(username));
+
+    if (usernameInLocalStorage) {
+      setHistory(Object.keys(usernameInLocalStorage.history));
     }
   }, []);
 
@@ -36,7 +38,7 @@ export const History = () => {
                   </div>
                 )
               })
-              : <div className="spinner" />
+              : null
           }
         </div>
       </div>

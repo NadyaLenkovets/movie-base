@@ -6,14 +6,14 @@ import "./MovieCard.css";
 
 export const MovieCard = (props) => {
   const {
-    Poster: poster,
+    poster,
     imdbID
   } = props;
 
   return (
     <div className="movie__item" >
       <div className="movie__image">
-        <img src={poster}></img>
+        <img src={poster} alt="No poster"></img>
       </div>
       <Link to={`/movie/${imdbID}`} >
         <button className="btn more-button">More</button>

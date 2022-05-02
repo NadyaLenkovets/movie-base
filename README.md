@@ -36,3 +36,12 @@
 - Доделала компоненты Favorites, History.
 - Добавила новый компонент FavoritesCard.
 - Вынесла кнопку перехода на предыдущую страницу в отдельный компонент GoBack.
+
+
+### branch5
+
+- Доработала userMiddleware.
+- Добавила динамический поиск и компонент DynamicSearch.
+- Создала moviesAPI с запросами RTK Query и Transforming Responses.
+- Удалила moviesSlice, т.к. он больше не используется.
+- Рефакторинг кода.
