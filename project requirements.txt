@@ -1,0 +1,58 @@
+Особенности проекта
+На главной странице сделала поиск по нажатию на кнопку. Рядом справа по нажатию на кнопку Dynamic search можно 
+перейти на страницу динамического поиска с debounce. API не очень хорошо выдает результаты поиска, поэтому 
+вводить лучше не менее 3 букв. 
+В history сохраняются только результаты поиска по кнопке.
+
+React
+•	Пишем функциональные компоненты c хуками в приоритете над классовыми.
+Классовый компонент только один - src\components\ErrorBoundary\ErrorBoundary.jsx,
+остальные функциональные с хуками.
+•	Есть четкое разделение на умные и глупые компоненты 
+Глупые:
+src\components\MovieCard\MovieCard.jsx
+src\components\GoBack\GoBack.js
+Умные:
+src\components\Home\Home.jsx
+•	Есть рендеринг списков 
+Компоненты :
+src\components\Movies\Movies.jsx
+src\components\History\History.jsx
+src\components\Favorites\Favorites.jsx
+•	Реализована хотя бы одна форма 
+Компоненты :
+src\components\Sign-Up\Sign-Up.jsx
+src\components\Login\Login.jsx
+•	Есть применение Контекст API 
+Создается в компоненте src\App.js.
+Используется в src\components\MovieDetails\MovieDetails.jsx на кнопке смены 
+цветовой темы на карточке фильма.
+•	Есть применение предохранителя 
+Компонент src\components\ErrorBoundary\ErrorBoundary.jsx.
+•	Есть хотя бы один кастомный хук 
+Создается src\common\useFetch.js.
+Используется src\components\SearchList\SearchList.jsx.
+•	Хотя бы несколько компонентов используют PropTypes 
+src\components\FavoritesCard\FavoritesCard.jsx
+src\components\MovieCard\MovieCard.jsx
+•	Поиск не должен триггерить много запросов к серверу 
+Компонент src\components\DynamicSearch\DynamicSearch.jsx
+
+
+Redux
+•	Используем Modern Redux with Redux Toolkit
+src\features\user\userSlice.js
+src\features\store.js
+•	Используем слайсы
+src\features\user\userSlice.js
+•	Есть хотя бы одна кастомная мидлвара 
+src\features\user\userMiddleware.js
+•	Используется RTK Query
+src\common\apis\moviesAPI.js
+•	Используется Transforming Responses
+src\common\apis\moviesAPI.js
+
+
+
+
+
