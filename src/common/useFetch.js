@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import { APIKey } from "./apis/MovieApiKey";
+import { APIKey } from './apis/MovieApiKey';
 
 export const useFetch = (name, type) => {
   const [status, setStatus] = useState({

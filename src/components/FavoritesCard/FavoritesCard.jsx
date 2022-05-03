@@ -21,19 +21,19 @@ export const FavoritesCard = (movie) => {
 
   const handleClick = () => {
     dispatch(removeFromUserFavorites(`${imdbID}`))
-    setRemoveActive(false);
+    setRemoveActive(() => !removeActive);
   }
 
   return (
-    <div className="favorites__card-container" key={imdbID}>
+    <div className='favorites__card-container' key={imdbID}>
       <Link to={`/movie/${imdbID}`} >
-        <div className="favorites__card">
-          <div className="favorites__image" style={{ backgroundImage: `url(${poster})` }}></div>
-          <div className="favorites__info">
-            <h2 className="favorites__block favorites__title">{title}</h2>
-            <p className="favorites__block"><i>{year} / {imdbRating}</i></p>
-            <p className="favorites__block">{actors}</p>
-            <p className="favorites__block">{runtime}</p>
+        <div className='favorites__card'>
+          <div className='favorites__image' style={{ backgroundImage: `url(${poster})` }}></div>
+          <div className='favorites__info'>
+            <h2 className='favorites__block favorites__title'>{title}</h2>
+            <p className='favorites__block'><i>{year} / {imdbRating}</i></p>
+            <p className='favorites__block'>{actors}</p>
+            <p className='favorites__block'>{runtime}</p>
           </div>
         </div>
       </Link>
@@ -41,8 +41,8 @@ export const FavoritesCard = (movie) => {
         className=
         {
           removeActive
-            ? "remove-from-favorites active"
-            : "remove-from-favorites"
+            ? 'remove-from-favorites active'
+            : 'remove-from-favorites'
         }
         onClick={handleClick}></button>
     </div>

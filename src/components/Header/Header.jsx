@@ -13,23 +13,23 @@ export const Header = () => {
   const username = useSelector(getUsername);
 
   return (
-    <header className="header container">
-      <Link to="/" className="logoLink">
-        <div className="headerLogo">Movie Base</div>
+    <header className='header container'>
+      <Link to='/' className='logoLink'>
+        <div className='headerLogo'>Movie Base</div>
       </Link>
       {
         isAuth
           ? <>
-            <div className="header__username">{username}</div>
-            <div className="headerButtons">
-              <Link to="/favorites" className="header__btn ">Favorites</Link>
-              <Link to="/history" className="header__btn ">History</Link>
-              <Link to="/" className="header__btn" onClick={dispatch(userLogOut)}>Log Out</Link>
+            <div className='header__username'>{username}</div>
+            <div className='headerButtons'>
+              <Link to='/favorites' className='header__btn '>Favorites</Link>
+              <Link to='/history' className='header__btn '>History</Link>
+              <Link to='/' className='header__btn' onClick={dispatch(userLogOut)}>Log Out</Link>
             </div>
           </>
-          : <div className="headerButtons">
-            <Link to="/login" className="header__btn">Login</Link>
-            <Link to="/signup" className="header__btn">Sign Up</Link>
+          : <div className='headerButtons'>
+            <Link to='/login' className='header__btn'>Login</Link>
+            <Link to='/signup' className='header__btn'>Sign Up</Link>
           </div>
       }
     </header>

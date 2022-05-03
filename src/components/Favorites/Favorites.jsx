@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import { FavoritesCard } from '../FavoritesCard/FavoritesCard';
-import { GoBack } from '../GoBack/GoBack';
+import { FavoritesCard } from '../FavoritesCard';
+import { GoBack } from '../GoBack';
 
 import { getUsername } from '../../features/user/userSlice';
 
@@ -45,8 +45,8 @@ export const Favorites = () => {
     <section className='favorites'>
       <div className='favorites__container'>
         <GoBack />
-        <h2 className="favorites__main-title">Your favorites</h2>
-        <div className="favorites__cards">
+        <h2 className='favorites__main-title'>Your favorites</h2>
+        <div className='favorites__cards'>
           {
             list.length ?
               list.map(movie => {
